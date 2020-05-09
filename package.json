@@ -1,0 +1,25 @@
+{
+  "name": "bike-rental-app-back",
+  "version": "1.0.0",
+  "description": "Bike rental app back end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexeyKasaev3/bike-rental-app-back.git"
+  },
+  "author": "Aleksey Kasaev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexeyKasaev3/bike-rental-app-back/issues"
+  },
+  "homepage": "https://github.com/AlexeyKasaev3/bike-rental-app-back#readme",
+  "devDependencies": {
+    "eslint": "^7.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
