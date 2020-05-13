@@ -18,5 +18,4 @@ exports.addNewBicycle = async newBicycleData => {
 exports.deleteBicycle = async bicycleId => {
   const queryResult = await bicycleMongooseModel.deleteOne({ _id: new Types.ObjectId(bicycleId) });
   if (!queryResult.deletedCount) throw new Error("no rent entry was found to delete");
-  return bicycleId;
 };

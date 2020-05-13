@@ -3,9 +3,8 @@ const handleServerError = require("../helpers/serverErrorHandler");
 
 exports.rentBicycle = async (req, res) => {
   try {
-    const newRentEntryData = await rentModel.rentBicycle("5eba984e0267fc2486b2b70d");
-    console.log(newRentEntryData);
-    res.send(newRentEntryData);
+    await rentModel.rentBicycle(req.params.bicycleId);
+    res.sendStatus(200);
   } catch (error) {
     handleServerError(error, res);
   }
@@ -13,8 +12,8 @@ exports.rentBicycle = async (req, res) => {
 
 exports.rentBicycleCancel = async (req, res) => {
   try {
-    const canceledBycicleId = await rentModel.rentBicycleCancel("5eba984e0267fc2486b2b70d");
-    res.send({ canceledBycicleId });
+    await rentModel.rentBicycleCancel(req.params.bicycleId);
+    res.sendStatus(200);
   } catch (error) {
     handleServerError(error, res);
   }

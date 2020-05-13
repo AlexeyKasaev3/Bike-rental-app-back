@@ -1,16 +1,10 @@
 const { Types } = require("mongoose");
-const rentMongooseModel = require("./schemas/rentSchema");
+const bicycleMongooseModel = require("./schemas/bicycleSchema");
 
 exports.rentBicycle = async bicycleId => {
-  const rentBicycleMongooseObject = new rentMongooseModel({
-    rent_start_time: Date.now(),
-    bicycle_id: new Types.ObjectId(bicycleId)
-  });
-  return await rentBicycleMongooseObject.save();
+  return await bicycleMongooseModel.updateOne({ _id: new Types.ObjectId(bicycleId) }, { rent_start_time: Date.now() });
 };
 
 exports.rentBicycleCancel = async bicycleId => {
-  const queryResult = await rentMongooseModel.deleteOne({ bicycle_id: new Types.ObjectId(bicycleId) });
-  if (!queryResult.deletedCount) throw new Error("no rent entry was found to delete");
-  return bicycleId;
+  await bicycleMongooseModel.updateOne({ _id: new Types.ObjectId(bicycleId) }, { $unset: { rent_start_time: 1 } });
 };

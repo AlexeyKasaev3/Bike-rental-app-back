@@ -25,8 +25,8 @@ exports.addNewBicycle = async (req, res) => {
 
 exports.deleteBicycle = async (req, res) => {
   try {
-    const deletedBicycleId = await bicycleModel.deleteBicycle("5eba76a67f0c3f6afd3ab5af");
-    res.status(200).send({ deletedBicycleId });
+    await bicycleModel.deleteBicycle("5eba76a67f0c3f6afd3ab5af");
+    res.sendStatus(200);
   } catch (error) {
     handleServerError(error, res);
   }
