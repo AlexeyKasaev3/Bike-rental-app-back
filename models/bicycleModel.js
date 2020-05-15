@@ -2,7 +2,7 @@ const bicycleMongooseModel = require("./schemas/bicycleSchema");
 const { Types } = require("mongoose");
 
 exports.getAllBicycles = async () => {
-  return await bicycleMongooseModel.find();
+  return await bicycleMongooseModel.find({});
 };
 
 exports.addNewBicycle = async newBicycleData => {

@@ -5,9 +5,10 @@ const router = require("./router");
 
 const app = express();
 
-const portToListen = 3000;
+const portToListen = 4400;
 
 app.use(cors());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
 app.use((req, res, next) => res.sendStatus(404));

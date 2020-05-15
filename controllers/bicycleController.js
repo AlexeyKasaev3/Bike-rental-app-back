@@ -4,7 +4,9 @@ const handleServerError = require("../helpers/serverErrorHandler");
 exports.getAllBicycles = async (req, res) => {
   try {
     const bicyclesData = await bicycleModel.getAllBicycles();
-    res.send(bicyclesData);
+    setTimeout(() => {
+      res.send(bicyclesData);
+    }, 500);
   } catch (error) {
     handleServerError(error, res);
   }
@@ -13,11 +15,13 @@ exports.getAllBicycles = async (req, res) => {
 exports.addNewBicycle = async (req, res) => {
   try {
     const newBike = await bicycleModel.addNewBicycle({
-      bicycle_name: "test name MODEL",
-      bicycle_type: "test type",
-      bicycle_rent_price: 20.22
+      bicycle_name: req.body.bikeName,
+      bicycle_type: req.body.bikeType,
+      bicycle_rent_price: req.body.rentPrice
     });
-    res.status(200).send(JSON.stringify(newBike));
+    setTimeout(() => {
+      res.status(200).send(newBike);
+    }, 500);
   } catch (error) {
     handleServerError(error, res);
   }
@@ -25,8 +29,10 @@ exports.addNewBicycle = async (req, res) => {
 
 exports.deleteBicycle = async (req, res) => {
   try {
-    await bicycleModel.deleteBicycle("5eba76a67f0c3f6afd3ab5af");
-    res.sendStatus(200);
+    await bicycleModel.deleteBicycle(req.params.bicycleId);
+    setTimeout(() => {
+      res.sendStatus(200);
+    }, 500);
   } catch (error) {
     handleServerError(error, res);
   }
